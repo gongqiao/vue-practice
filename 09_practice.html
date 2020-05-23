@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue</title>
+
+	<style>
+		.active{
+			border: 2px solid red;
+		}
+	</style>
+</head>
+  <body>
+
+  	<div id="app">
+		<input type="button" value="<" @click="last" v-show="lShow" >
+		<img  :src="imageSrc"  width="400" height="400"/>
+		<input type="button" value=">" @click="next" v-show="nShow">
+	</div>
+
+  	<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	  
+	
+	<!-- 设置元素的属性 v-bind -->
+  	<script type="text/javascript">
+  		var app = new Vue({
+		  el: '#app',
+		  data: {
+			lShow: false,
+			nShow: true,
+		    index: 0,
+			imageArray: [
+				"https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3331583982,1749749976&fm=26&gp=0.jpg",
+				"https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1356921416,351703277&fm=26&gp=0.jpg",
+				"https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=801106579,128606554&fm=26&gp=0.jpg",
+				"https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2891788098,624849995&fm=26&gp=0.jpg",
+				"https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=342855041,2105479882&fm=26&gp=0.jpg",
+				],
+			imageSrc: "https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3331583982,1749749976&fm=26&gp=0.jpg",
+		  },
+		  methods: {
+			last: function(){
+				this.index --
+				if(this.index<=0){
+					this.lShow = false
+				}else{
+					this.nShow = true
+				}
+				this.imageSrc = this.imageArray[this.index]
+			},
+			next: function(){
+				this.index ++
+				if(this.index >= this.imageArray.length-1 ){
+					this.nShow = false
+				}else{
+					this.lShow = true
+				}
+				this.imageSrc = this.imageArray[this.index]
+				
+			},
+		  }
+		})
+
+  	</script>
+  </body>
+
+</html>

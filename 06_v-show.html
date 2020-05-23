@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue</title>
+</head>
+  <body>
+
+  	<div id="app">
+		<img  v-show="show" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3331583982,1749749976&fm=26&gp=0.jpg">
+		<img v-show="age >= 18" src="https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=318522065,421459624&fm=26&gp=0.jpg" >
+		<input type="button" value="显示影藏图片" @click="changeShow"></input>
+		<input type="button" value="累加年龄" @click="addAge"></input>
+	</div>
+
+  	<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  	
+  	<script type="text/javascript">
+  		var app = new Vue({
+		  el: '#app',
+		  data: {
+		    show: false,
+			age: 17,
+		  },
+		  methods: {
+			// 操作 v-show dom  display 样式
+			changeShow: function(){
+				  this.show = !this.show
+			  },
+			  addAge: function(){
+				  if(this.show){
+					this.age --
+				  }else{
+					this.age ++
+				  }
+				  
+			  }
+		  }
+		})
+
+  	</script>
+  </body>
+
+</html>

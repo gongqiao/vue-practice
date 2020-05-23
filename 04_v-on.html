@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue</title>
+</head>
+  <body>
+
+  	<div id="app">
+	  
+		<p v-html="content"></p>
+		<input type="button" value="v-on指令" v-on:click="doIt">
+		<input type="button" value="v-on指令" @click="doIt">
+		<input type="button" value="v-on指令" @dblclick="doIt">
+	</div>
+
+  	<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  	
+  	<script type="text/javascript">
+  		var app = new Vue({
+		  el: '#app',
+		  data: {
+			
+		    content: "<a href='http://www.baidu.com'>百度</a>",
+		  },
+		  // 添加事件绑定
+		  methods: {
+			doIt: function(){
+				alert("do it");
+				// 通过事件改变数据绑定
+				this.content = "<a href='http://sports.sina.com.cn/'>新浪体育</a>"
+			}
+		  }
+		})
+
+  	</script>
+  </body>
+
+</html>

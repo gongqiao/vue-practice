@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue</title>
+</head>
+  <body>
+		<section id="todoapp">
+			<!--输入框-->
+			<header class="header">
+				<h1>记事本</h1>
+				<input v-model="inputValue" @keyup.enter="note" autofocus="autofocus"auocomplete="off" placeholder="请输入" class="new-todo">
+			</header>
+
+			<!--列表-->
+			<section class="main">
+				<ul class="todo-list">
+					<li class="todo" v-for="(item, index) in list">
+						<div class="view">
+							<span class="index">{{index +1}}</span>
+							<label>{{item}}</label>
+							<input class="destroy" value="删除" type="button" @click=del(index)></input>
+						</div>
+					</li>
+				</ul>
+			</section>
+
+			<!-- 统计 -->
+			<footer>
+				<span>{{list.length}}</span>
+			</footer>
+
+		</section>
+
+
+  	<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  	
+	<script type="text/javascript">
+	
+		var app = new Vue({
+			el: '#todoapp',
+			data: {
+				list: ["Java", "PHP", "JS"],
+				inputValue: "SQL"
+			},
+			methods: {
+				note: function(){
+					this.list.push(this.inputValue)
+				},
+				del: function(i){
+					this.list.splice(i,1)
+				}
+			}
+		})
+  	</script>
+  </body>
+
+</html>
